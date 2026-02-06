@@ -1,0 +1,464 @@
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+ }
+ 
+ 
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #4CAF50;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+ }
+ 
+ 
+ /* Container styled to look like a mobile screen */
+ .container {
+    width: 100%;
+    max-width: 400px; /* Mobile-friendly width */
+    height: 90vh;
+    background-color: #000;
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+ }
+ 
+ 
+ /* Title styling */
+ h1 {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+ }
+ .heading {
+   position: sticky;
+   top: 0; /* Keep it stuck at the top */
+   padding: 10px;
+   font-size: 24px;
+   z-index: 10; /* Ensures the heading stays on top of other content */
+}
+ 
+ /* Game search and list display */
+ #game-search {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 1em;
+ }
+ 
+ 
+/* Search button styling */
+#search-button {
+   padding: 9px 18px; /* Increased padding for better clickability */
+   background-color: #00bfae; /* Green background for the search button */
+   color: white; /* White text color */
+   border: none; /* No border */
+   border-radius: 30px; /* More rounded corners */
+   font-size: 1.1em; /* Slightly larger font size */
+   font-weight: bold; /* Make the text bolder for emphasis */
+   cursor: pointer; /* Pointer cursor for interactivity */
+   transition: background-color 0.3s, transform 0.2s; /* Smooth transitions for hover effects */
+   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Text shadow for better contrast */
+}
+ 
+ 
+ #search-button:hover {
+   background-color: #008c76; /* Darker green on hover */
+ }
+ 
+ 
+ #result {
+    margin-top: 10px;
+    text-align: left;
+    color: #ccc;
+    max-height: 570px; /* Set the maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+ }
+
+ /* Hide the scrollbar for mobile experience */
+#result::-webkit-scrollbar {
+   width: 0px;
+   background: transparent;
+}
+
+ #queue {
+   margin-top: 15px;
+    text-align: left;
+    color: #ccc;
+    max-height: 625px; /* Set the maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+}
+ /* Hide the scrollbar for mobile experience */
+ #queue::-webkit-scrollbar {
+   width: 0px;
+   background: transparent;
+}
+
+#completed-list {
+   margin-top: 15px;
+   text-align: left;
+   color: #ccc;
+   max-height: 630px; /* Set the maximum height for the container */
+   overflow-y: auto; /* Enable vertical scrolling */
+   padding: 10px;
+}
+ /* Hide the scrollbar for mobile experience */
+ #completed-list::-webkit-scrollbar {
+   width: 0px;
+   background: transparent;
+}
+ 
+ 
+ /* Footer styling for navigation buttons */
+ .footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #111;
+    padding: 10px 0;
+    border-top: 1px solid #444;
+    border-radius: 0 0 16px 16px;
+ }
+ 
+ 
+ .footer-button {
+    color: grey;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 8px;
+ }
+ 
+ 
+ .footer-button:hover {
+    color: #0056b3;
+ }
+
+ /* Footer active button styling */
+.footer-button.active {
+   color: #fff;
+   background-color: grey;
+   border-radius: 12px;
+   padding: 8px;
+}
+
+
+
+/* Game Card Styling */
+.game-card {
+   display: flex;
+   background-color: #1e3d28 ;
+   color: #fff;
+   border-radius: 10px;
+   padding: 10px;
+   margin: 10px;
+   cursor: pointer;
+   transition: transform 0.3s;
+   align-items: flex-start;
+}
+.game-card:hover {
+   transform: scale(1.05);
+}
+.game-card img {
+   width: 80px;
+   height: 90px;
+   margin-right: 10px;
+   border-radius: 5px;
+   object-fit: cover;
+}
+.game-card .card-details {
+   text-align: left;
+}
+.game-card h3 {
+   font-size: 1.1em;
+   margin-bottom: 5px;
+   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+.game-card p {
+   font-size: 0.85em;
+   color: #F0F0F0;
+   margin: 2px 0;
+   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Text shadow for better contrast */
+}
+
+
+.modal {
+   z-index: 100;
+   position: absolute;
+   top: 6%;
+   left: 6%;
+   width: 88%;
+   height: 90%;
+   max-width:370px;
+   max-height: 100%;
+   background: #1e3d28;
+   display: none;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   overflow-y: auto;
+   padding: 20px;
+}
+
+.tracked-game-modal {
+   z-index: 100;
+   position: absolute;
+   top: 6%;
+   left: 6%;
+   width: 88%;
+   height: 90%;
+   max-width:370px;
+   max-height: 100%;
+   background: #1e3d28;
+   display: none;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   overflow-y: auto;
+   padding: 20px;
+}
+
+.completed-game-modal {
+   z-index: 100;
+   position: absolute;
+   top: 6%;
+   left: 6%;
+   width: 88%;
+   height: 90%;
+   max-width:370px;
+   max-height: 100%;
+   background: #1a5b0f;
+   display: none;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   overflow-y: auto;
+   padding: 20px;
+}
+
+
+.modal-content {
+   background: #1e3d28;
+   padding: 20px;
+   max-width: 100%;
+   max-height: 100%;
+   overflow-y: auto;
+   font-size: 14px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.tracked-modal-content {
+   background: #1e3d28;
+   padding: 20px;
+   max-width: 100%;
+   max-height: 100%;
+   overflow-y: auto;
+   font-size: 14px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.completed-modal-content {
+   background: #1e3d28;
+   padding: 20px;
+   max-width: 100%;
+   max-height: 100%;
+   overflow-y: auto;
+   font-size: 14px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.modal-content::-webkit-scrollbar {
+   display: none;
+}
+.tracked-modal-content::-webkit-scrollbar {
+   display: none;
+}
+.completed-modal-content::-webkit-scrollbar {
+   display: none;
+}
+
+.close {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   font-size: 100px;
+   cursor: pointer;
+   color: white;
+}
+
+
+.button-container {
+   display: flex;
+   justify-content: center;
+   gap: 10px; /* Space between buttons */
+   margin-top: 20px;
+}
+
+.button-container button {
+   display: block; /* Centers button horizontally */
+   margin: 20px auto 0; /* Center with margin and space from content */
+   padding: 10px 20px; /* Increase padding for a larger button */
+   font-size: 18px; 
+   color: white; /* Text color to match modal background */
+   background-color: #4caf50; /* White bubble background */
+   border: none; /* Remove default border */
+   border-radius: 30px; /* Rounded bubble shape */
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow*/
+   transition: background-color 0.3s, color 0.3s; /* Smooth color transitions */
+   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); /* Adding text shadow */
+}
+
+.button-container button:hover {
+   background-color: #1a5b0f; /* Change background on hover */
+   color: white; /* Invert text color on hover */
+}
+
+
+#delete-button:hover{
+   background-color: rgb(155, 30, 30);
+}
+
+#mark-as-played{
+   display: block; /* Centers button horizontally */
+   margin: 20px auto 0; /* Center with margin and space from content */
+   padding: 15px 30px; /* Increase padding for a larger button */
+   font-size: 18px; 
+   color: #FFFF; /* Text color to match modal background */
+   background-color: #4caf50; /* Green bubble background */
+   border: none; /* Remove default border */
+   border-radius: 30px; /* Rounded bubble shape */
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow*/
+   transition: background-color 0.3s, color 0.3s; /* Smooth color transitions */
+   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); /* Adding text shadow */
+}
+#mark-as-played:hover {
+   background-color: #1a5b0f;
+   color: white; /* Invert text color on hover */
+}
+
+#mark-as-played-queue{
+   display: block; /* Centers button horizontally */
+   margin: 20px auto 0; /* Center with margin and space from content */
+   padding: 15px 30px; /* Increase padding for a larger button */
+   font-size: 18px; 
+   color: white; /* Text color to match modal background */
+   background-color: #4caf50; /* White bubble background */
+   border: none; /* Remove default border */
+   border-radius: 30px; /* Rounded bubble shape */
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow*/
+   transition: background-color 0.3s, color 0.3s; /* Smooth color transitions */
+   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); /* Adding text shadow */
+}
+#mark-as-played-queue:hover {
+   background-color: #1a5b0f;
+   color: white; /* Invert text color on hover */
+}
+
+#game-cover {
+   width: 100%;        
+   height: auto;       
+   max-width: 400px;  
+   object-fit: cover;    
+   border-radius: 8px; 
+}
+
+#info-button {
+   font-size: 1.5em;
+   color: #9e9e9e;
+   cursor: pointer;
+   margin-left: 10px;
+}
+
+#info-button:hover {
+   color: #0056b3;
+}
+
+#filter-container {
+   display: flex;
+   flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+   justify-content: center;
+   gap: 5px; /* Small gap between buttons */
+   max-height: 4em; /* Restrict height (height of ~2 rows) */
+   overflow: hidden; /* Hide any overflow if buttons exceed two rows */
+}
+
+.filter-button {
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   padding: 5px 10px; /* Keep buttons compact */
+   font-size: 0.8em; /* Slightly smaller font size */
+   cursor: pointer;
+   transition: background-color 0.3s;
+   white-space: nowrap; /* Prevent buttons from wrapping text */
+   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); /* Adding text shadow */
+
+}
+
+.filter-button:hover {
+   background-color: #0056b3;
+}
+
+/* Active filter button styling */
+.filter-button.active {
+   background-color: #0056b3; /* Darker blue for active state */
+   color: #fff;
+   border: 2px solid #00bfae; /* Add a border to distinguish active filter */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow for the active button */
+}
+
+.notification {
+   position: absolute; /* Positioned relative to the container */
+   bottom: 80px; /* Adjust to stay above the footer */
+   left: 50%;
+   transform: translateX(-50%); /* Center horizontally within the container */
+   background-color: black; /* Black background */
+   color: white;
+   padding: 10px 20px;
+   border-radius: 5px;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+   font-size: 16px;
+   opacity: 0;
+   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+   transform: translate(-50%, 20px); /* Start slightly off position for animation */
+   z-index: 1000;
+ }
+ 
+ .notification.show {
+   opacity: 1;
+   transform: translate(-50%, 0); /* Animate to its visible position */
+ }
+ 
+ .hidden {
+   display: none;
+ }
+ 
+ 
+ 
