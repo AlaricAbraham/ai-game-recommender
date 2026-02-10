@@ -11,7 +11,6 @@ const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const IGDB_API_CLIENT_ID = process.env.IGDB_CLIENT_ID;
 const IGDB_API_AUTH_TOKEN = process.env.IGDB_ACCESS_TOKEN;
 
@@ -162,5 +161,5 @@ app.post("/get-igdb-game-info", async (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
