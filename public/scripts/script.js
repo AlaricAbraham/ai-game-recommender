@@ -117,9 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCompletedGames();
     displayQueueGameCards();
         
-
-     // Define the base URL of the server
-     const SERVER_URL = "http://localhost:5000"; // server running on client machine
+    // Relative path, automatically uses the current domain
+    const SERVER_URL = ""; 
 
     // Function to reset active tab by removing the "active" class from all buttons
     function resetActiveTab() {
@@ -162,21 +161,21 @@ document.addEventListener("DOMContentLoaded", function () {
             resultSection.innerHTML = "<p>Searching...</p>";
 
             try {
-                console.log("trying ChatGPT api"); // debug
+                console.log("trying Gemini api"); // debug
 
                 // Step 1: Get game recommendations from ChatGPT considering the user's play history
                 const completedTitles = completedGames.map(game => game.name);
                 query = `${"Games based on my play history"} USER'S PLAY HISTORY: ${completedTitles.join(", ")}`;
 
-                const chatGPTResponse = await fetch(`${SERVER_URL}/get-game-recommendations`, {
+                const geminiResponse = await fetch(`${SERVER_URL}/get-game-recommendations`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ query }),
                 });
-                const chatGPTData = await chatGPTResponse.json();
-                const gameTitles = chatGPTData.gameTitles;
+                const geminiData = await geminiResponse.json();
+                const gameTitles = geminiData.gameTitles;
                 
                 // Step 2: Get game info from IGDB API
                 console.log("trying igdb api"); // debug
@@ -226,21 +225,23 @@ document.addEventListener("DOMContentLoaded", function () {
             resultSection.innerHTML = "<p>Searching...</p>";
 
             try {
-                console.log("trying Chatgpt api"); // debug
+                console.log("trying Gemini api"); // debug
 
                 // Step 1: Get game recommendations from ChatGPT considering the user's play history
                 const completedTitles = completedGames.map(game => game.name);
                 query = `${query} USER'S PLAY HISTORY: ${completedTitles.join(", ")}`;
 
-                const chatGPTResponse = await fetch(`${SERVER_URL}/get-game-recommendations`, {
+                const GeminiResponse = await fetch(`${SERVER_URL}/get-game-recommendations`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ query }),
                 });
-                const chatGPTData = await chatGPTResponse.json();
-                const gameTitles = chatGPTData.gameTitles;
+                const geminiData = await GeminiResponse.json();
+                const gameTitles = geminiData.gameTitles;
+
+                console.log("titles retreived from Gemini:", gameTitles); // debug
                 
                 // Step 2: Get game info from IGDB API
                 console.log("trying igdb api"); // debug
@@ -252,6 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify({ gameTitles }),
                 });
                 const igdbData = await igdbResponse.json();
+
+                console.log("data retreived from IGDB: ", igdbData.games);
                 console.log("displaying found games"); // debug
                 // Step 3: Display filter buttons and game info as cards
                 displaySearchedGameCards(igdbData.games);
